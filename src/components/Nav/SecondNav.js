@@ -11,7 +11,7 @@ function SecondNav() {
     <SecondNavBar>
       <SecondNavSection onMouseLeave={closeModal}>
         <NavHome to="/">스토어홈</NavHome>
-        <NavCategory to="/category" onMouseEnter={openModal}>
+        <NavCategory to="/productlist" onMouseEnter={openModal}>
           카테고리
         </NavCategory>
         {navModal && <NavModal />}
