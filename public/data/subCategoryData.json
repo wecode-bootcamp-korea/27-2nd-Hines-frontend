@@ -1,0 +1,210 @@
+[
+  {
+    "result": [
+      {
+        "id": 1,
+        "name": "MARS-9",
+        "price": "199999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/MARS.jpeg"
+      },
+      {
+        "id": 2,
+        "name": "PICHU",
+        "price": "399999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/PICHU.jpeg"
+      },
+      {
+        "id": 3,
+        "name": "KRK",
+        "price": "499999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/KRK.jpeg"
+      },
+      {
+        "id": 7,
+        "name": "EZ",
+        "price": "199999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/EZ.jpeg"
+      },
+      {
+        "id": 9,
+        "name": "RO-X",
+        "price": "399999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/RO-X.jpeg"
+      },
+      {
+        "id": 11,
+        "name": "PAK",
+        "price": "399999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/PAK.jpeg"
+      }
+    ]
+  },
+  {
+    "result": [
+      {
+        "id": 4,
+        "name": "SAT-X",
+        "price": "199999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/SAT.png"
+      },
+      {
+        "id": 5,
+        "name": "OUR",
+        "price": "299999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/OUR.jpeg"
+      },
+      {
+        "id": 6,
+        "name": "QN",
+        "price": "199999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/QN.jpeg"
+      },
+      {
+        "id": 8,
+        "name": "CONDA",
+        "price": "199999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/CONDA.jpeg"
+      },
+      {
+        "id": 10,
+        "name": "SF-08",
+        "price": "299999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/SF-08.jpeg"
+      },
+      {
+        "id": 12,
+        "name": "RAL",
+        "price": "299999.99",
+        "brand": "DW",
+        "description": "description",
+        "thumbnail_image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/RAL.jpeg"
+      }
+    ]
+  },
+  {
+    "result": [
+      {
+        "id": 13,
+        "name": "SPACE-SUITE",
+        "price": "500000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2011/12/13/17/09/astronaut-11050_1280.jpg"
+      },
+      {
+        "id": 14,
+        "name": "CYBERX-39",
+        "price": "329000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2014/04/09/17/48/man-320274_1280.png"
+      },
+      {
+        "id": 15,
+        "name": "WHITE-T",
+        "price": "99000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2017/01/13/04/56/blank-1976334_1280.png"
+      },
+      {
+        "id": 16,
+        "name": "THE-CAPE",
+        "price": "129000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2016/02/09/01/01/isolated-1188090_1280.png"
+      },
+      {
+        "id": 17,
+        "name": "RED-HOOD",
+        "price": "99000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2015/12/06/21/04/person-1080055_1280.png"
+      },
+      {
+        "id": 18,
+        "name": "MATRIX-EFFECT-SUIT",
+        "price": "129000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2020/04/29/10/18/stress-5108221__480.jpg"
+      }
+    ]
+  },
+  {
+    "result": [
+      {
+        "id": 19,
+        "name": "NAVY-PANTS",
+        "price": "99000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2017/08/27/05/33/trousers-2685231_1280.jpg"
+      },
+      {
+        "id": 20,
+        "name": "GRAY-JEAN",
+        "price": "39000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2018/10/10/14/23/pants-3737400_1280.jpg"
+      },
+      {
+        "id": 21,
+        "name": "JX-HANSOME-SUIT",
+        "price": "129000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2021/04/13/15/08/spacesuit-6175962_1280.jpg"
+      },
+      {
+        "id": 22,
+        "name": "FISHERMAN-PANTS",
+        "price": "99000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2018/01/09/16/11/angler-3071970_1280.jpg"
+      },
+      {
+        "id": 23,
+        "name": "SPACE-SUITE-PANTS",
+        "price": "99000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://cdn.pixabay.com/photo/2018/06/25/15/21/science-3497118_1280.png"
+      },
+      {
+        "id": 24,
+        "name": "ALIEN-SUIT",
+        "price": "129000.00",
+        "brand": "JX",
+        "description": "description",
+        "thumbnail_image_url": "https://www.pngfind.com/pngs/m/594-5944611_green-alien-morphsuit-guy-in-alien-costume-hd.png"
+      }
+    ]
+  }
+]

@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
   *{
     font-family: "Noto Sans Regular", "Arial", sans-serif !important;
     font-weight: 400;
+    text-decoration:none;
   }
 `;
 

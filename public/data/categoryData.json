@@ -1,0 +1,95 @@
+[
+  {
+    "message": "SUCCESS",
+    "category": [
+      {
+        "category_id": 1,
+        "category_name": "Area",
+        "sub_category": [
+          {
+            "sub_category_id": 1,
+            "sub_category_name": "Central Area"
+          },
+          {
+            "sub_category_id": 2,
+            "sub_category_name": "Belocity Area"
+          }
+        ]
+      },
+      {
+        "category_id": 2,
+        "category_name": "Closet",
+        "sub_category": [
+          {
+            "sub_category_id": 3,
+            "sub_category_name": "Top"
+          },
+          {
+            "sub_category_id": 4,
+            "sub_category_name": "Bottom"
+          }
+        ]
+      },
+      {
+        "category_id": 3,
+        "category_name": "Food",
+        "sub_category": [
+          {
+            "sub_category_id": 5,
+            "sub_category_name": "Food Pills"
+          },
+          {
+            "sub_category_id": 6,
+            "sub_category_name": "Seed"
+          },
+          {
+            "sub_category_id": 7,
+            "sub_category_name": "Seeding"
+          }
+        ]
+      },
+      {
+        "category_id": 4,
+        "category_name": "Tool",
+        "sub_category": [
+          {
+            "sub_category_id": 8,
+            "sub_category_name": "Indoor"
+          },
+          {
+            "sub_category_id": 9,
+            "sub_category_name": "Outdoor"
+          }
+        ]
+      },
+      {
+        "category_id": 5,
+        "category_name": "Transportation",
+        "sub_category": [
+          {
+            "sub_category_id": 10,
+            "sub_category_name": "Spaceship"
+          },
+          {
+            "sub_category_id": 11,
+            "sub_category_name": "Car"
+          }
+        ]
+      },
+      {
+        "category_id": 6,
+        "category_name": "Funiture",
+        "sub_category": [
+          {
+            "sub_category_id": 12,
+            "sub_category_name": "Chair"
+          },
+          {
+            "sub_category_id": 13,
+            "sub_category_name": "Bed"
+          }
+        ]
+      }
+    ]
+  }
+]

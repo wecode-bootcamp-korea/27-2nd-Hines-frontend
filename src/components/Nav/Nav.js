@@ -1,7 +1,5 @@
 import React from 'react';
-// import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { css } from 'styled-components';
 import SecondNav from '../Nav/SecondNav';
@@ -10,23 +8,6 @@ import { Cart } from '@styled-icons/bootstrap/Cart';
 import { Pencil } from '@styled-icons/bootstrap/Pencil';
 
 function Nav() {
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   fetch('/data/navTest.json')
-  //     .then(res => res.json())
-  //     .then(result => console.log(result));
-  // }, []);
-
-  // const [inputSearch, setInputSearch] = useState('');
-  // const searchValue = e => setInputSearch(e.target.value);
-
-  //const doSth = () => {
-  //  navigate(`productions/feed?query=${inputSearch}`);
-  //};
-
-  // const reultSearch = setInputSearch.filter; //(data)가 들어가는게 아니라?
-
   return (
     <>
       <Navbar>
@@ -44,8 +25,8 @@ function Nav() {
           </CategorySection>
           <RightSection>
             <SearchBox>
-              <SearchIcon /* onClick={doSth} */ />
-              <SearchInput type="text" /* onChange={searchValue}  */ />
+              <SearchIcon />
+              <SearchInput type="text" />
             </SearchBox>
             <LoginLink to="login">로그인</LoginLink>
             <CartLink to="/cart">
@@ -96,17 +77,6 @@ const Logo = styled.img`
   width: 112px;
   height: 25px;
 `;
-
-// const Logo = styled.img.attrs(props => ({
-//   alt: '로고',
-//   src:
-//     props.color === 'white'
-//       ? '/images/symbolwhite.png'
-//       : '/images/symbolbk.png',
-// }))`
-//   width: 75px;
-//   height: 30px;
-// `;
 
 const CategorySection = styled.div`
   width: 300px;

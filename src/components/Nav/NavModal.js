@@ -2,55 +2,36 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { css } from 'styled-components';
+import CATEGORY_DATA from './categoryData';
 
 function NavModal() {
   return (
-    <NavModalBar>
+    <div>
       <ModalContainer>
         <ModalCategoryBox>
           <ModalCategory>
-            <StoreHome to="/">스토어홈</StoreHome>
-            <Category to="/category">카테고리</Category>
-            <Best to="">베스트</Best>
-            <TodayDeal to="">오늘의딜</TodayDeal>
+            {CATEGORY_DATA.map(categories => {
+              return (
+                <Category
+                  key={categories.id}
+                  to={`productlist?category_id=${categories.id}`}
+                >
+                  {categories.menuName}
+                </Category>
+              );
+            })}
           </ModalCategory>
         </ModalCategoryBox>
       </ModalContainer>
-    </NavModalBar>
+    </div>
   );
 }
 
 const categoryText = css`
   padding-right: 15px;
   color: white;
-  font-size: ${({ theme }) => theme.fontMedium};
+  font-size: ${({ theme }) => theme.fontRegular};
   text-decoration: none;
-`;
-// const ModalBackground = styled.div`
-//   position: fixed;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   top: 0px;
-//   left: 0px;
-//   width: 100%;
-//   height: 100%;
-//   background: rgba(0, 0, 0, 0.3);
-//   z-index: 999;
-// `;
-
-const NavModalBar = styled.div`
-  /* position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-items: center;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 999; */
 `;
 
 const ModalContainer = styled.div`
@@ -65,8 +46,6 @@ const ModalContainer = styled.div`
   border-top: solid 1px white;
   background-color: black;
   z-index: 1;
-  /* transition: width 2s;
-  transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); */
 `;
 
 const ModalCategoryBox = styled.div`
@@ -79,19 +58,7 @@ const ModalCategoryBox = styled.div`
 
 const ModalCategory = styled.div``;
 
-const StoreHome = styled(Link)`
-  ${categoryText}
-`;
-
 const Category = styled(Link)`
-  ${categoryText}
-`;
-
-const Best = styled(Link)`
-  ${categoryText}
-`;
-
-const TodayDeal = styled(Link)`
   ${categoryText}
 `;
 
