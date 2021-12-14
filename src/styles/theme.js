@@ -1,17 +1,30 @@
 const theme = {
-  background: '#333',
+  background: '#000',
+  mainColor: '#000',
   white: '#FFFFFF',
-  vermilion: '#ff7425',
-  orange: '#FF9900',
-  opacityOrange: 'rgba(242,153,74,0.5)',
-  yellow: '#FFD66C',
   grey: 'rgba(196,196,196,0.3)',
   middleGrey: 'rgba(65,65,65,0.4)',
   deepGrey: '#828282',
-  lightOrange: 'rgba(255,195,170,0.3)',
   fontColor: '#2D2B2B',
-  fontTitle: "'Alata', sans-serif;",
+  fontLarge: '38px',
+  fontSemiLarge: '28px',
+  fontMedium: '22px',
+  fontRegular: '14px',
+  fontSmall: '12px',
+  fontWeightBold: 'font-weight:700',
+  fontWeightSemiBold: 'font-weight:500',
+  fontWeightRegular: 'font-weight:400',
+  fontWeightLight: 'font-weight:200',
+  fontTitle: "'Noto Sans KR', sans-serif;",
   fontContent: "'Noto Sans KR', sans-serif;",
+  flexMixin: (direction = 'row', align = 'center', justify = 'center') => `
+  display:flex;
+  flex-direction:${direction};
+  align-items:${align};
+  justify-content:${justify}
+  `,
+  buttonDefault: (width = '150px', backgroundColor = '#000') =>
+    `width:${width}; font-size:17px; background:${backgroundColor}; color:#fff; padding:14px 10px;`,
 };
 
 export default theme;
