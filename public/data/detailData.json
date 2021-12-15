@@ -1,0 +1,12 @@
+{
+  "result": {
+    "category_name": "Area",
+    "sub_category_name": "Central Area",
+    "product_name": "상품이름",
+    "price": 100000,
+    "brand": "파리바게뜨",
+    "description": "상품 설명이지롱상품 설명이지롱상품 설명이지롱상품 설명이지롱상품 설명이지롱상품 설명이지롱상품 설명이지롱상품 설명이지롱상품 설명이지롱상품 설명이지롱",
+    "tumbnail_image_url": "https://thx.us-east-1.linodeobjects.com/coverimages/i_34/%E3%85%8D%E3%85%8A_34.jpg",
+    "image_url": "https://raw.githubusercontent.com/Djangowon/TIL/main/image/MARS.jpeg"
+  }
+}
