@@ -41,10 +41,15 @@ function ProductDetail() {
                 <PlusBtn>+</PlusBtn>
                 <Count>1</Count>
                 <MinusBtn>-</MinusBtn>
+                <DeleteBtn>x</DeleteBtn>
               </CountControl>
-              <CartProductPrice>17,900</CartProductPrice>
-              <DeleteBtn>x</DeleteBtn>
             </Cart>
+            <TotalPriceContainer>
+              <TotalPriceTitle>주문금액</TotalPriceTitle>
+              <TotalPrice>
+                <TotalPriceNum>17,000</TotalPriceNum>원
+              </TotalPrice>
+            </TotalPriceContainer>
             <BtnList>
               <CartBtn>장바구니</CartBtn>
               <OrderBtn>바로구매</OrderBtn>
@@ -121,14 +126,13 @@ const CategoryList = styled.div`
 `;
 const MainCategory = styled.span`
   margin-right: 10px;
-  color: gray;
+  color: ${({ theme }) => theme.deepGrey};
 `;
-const Arrow = styled.span`
-  margin-right: 10px;
-  color: gray;
-`;
+
+const Arrow = styled(MainCategory)``;
+
 const SubCategory = styled.span`
-  color: gray;
+  color: ${({ theme }) => theme.deepGrey};
 `;
 
 const Product = styled.div`
@@ -155,22 +159,25 @@ const ProductImg = styled.img`
     transform: scale(1.2);
   }
 `;
+
 const ProductMainImg = styled.img`
   width: 558px;
   height: 558px;
   margin-right: 50px;
   border-radius: 10px;
 `;
+
 const ProductInfo = styled.div`
   width: 460px;
 `;
 
 const BrandName = styled.div`
-  font-size: 14px;
   margin-bottom: 20px;
-  font-weight: bold;
-  color: gray;
+  font-size: 14px;
+  ${({ theme }) => theme.fontWeightBold};
+  color: ${({ theme }) => theme.deepGrey};
 `;
+
 const ProductName = styled.div`
   font-size: 22px;
   margin-bottom: 13px;
@@ -182,30 +189,28 @@ const Price = styled.div`
 `;
 
 const PriceNum = styled.span`
-  font-weight: bold;
+  ${({ theme }) => theme.fontWeightBold};
 `;
 
 const Description = styled.p`
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border-bottom: 1px solid ${({ theme }) => theme.grey};
-  padding-bottom: 100px;
+  padding-bottom: 95px;
 `;
 const Cart = styled.div`
-  /* background-color: #f2f2f2; */
+  ${({ theme }) => theme.flexMixin('', 'center', 'space-between')};
+  height: 55px;
+  padding: 10px 20px;
   border-top: 1px solid ${({ theme }) => theme.grey};
   border-bottom: 1px solid ${({ theme }) => theme.grey};
   border-radius: 3px;
-  height: 55px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fontRegular};
 `;
 
 const CartProductName = styled.span``;
 
 const CountControl = styled.div``;
+
 const PlusBtn = styled.button`
   border: 1px solid ${({ theme }) => theme.grey};
   color: #b0b0b0;
@@ -215,47 +220,57 @@ const PlusBtn = styled.button`
     cursor: pointer;
   }
 `;
-const MinusBtn = styled.button`
-  border: 1px solid ${({ theme }) => theme.grey};
-  color: #b0b0b0;
-  background-color: white;
 
-  &:hover {
-    cursor: pointer;
-  }
-`;
+const MinusBtn = styled(PlusBtn)``;
+
 const Count = styled.span`
   padding: 10px;
 `;
 
 const DeleteBtn = styled.span`
   padding: 5px;
+  margin-left: 50px;
 
   &:hover {
     cursor: pointer;
   }
 `;
-
-const CartProductPrice = styled.span``;
-
-const BtnList = styled.div`
+const TotalPriceContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+`;
+
+const TotalPriceTitle = styled.span`
+  display: block;
+  font-size: 13px;
+  ${({ theme }) => theme.fontWeightBold};
+`;
+
+const TotalPrice = styled.div`
+  font-size: 20px;
+  ${({ theme }) => theme.fontWeightBold};
+`;
+
+const TotalPriceNum = styled.span``;
+
+const BtnList = styled.div`
+  ${({ theme }) => theme.flexMixin('', '', 'space-between')};
   margin-top: 20px;
 `;
+
 const CartBtn = styled.button`
-  background-color: white;
+  ${({ theme }) => theme.flexMixin('', 'center', 'center')};
   width: 185px;
   height: 50px;
-  padding: 13px 10px 14px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  font-weight: bold;
   border-radius: 10px;
-  color: #12acdb;
-  border: 1px solid #12acdb;
+  background-color: white;
+  color: ${({ theme }) => theme.skyBlue};
+  padding: 13px 10px 14px 10px;
+  border: 1px solid ${({ theme }) => theme.skyBlue};
+  font-size: 15px;
+  ${({ theme }) => theme.fontWeightBold};
 
   &:hover {
     background-color: #fafafa;
@@ -264,18 +279,16 @@ const CartBtn = styled.button`
 `;
 
 const OrderBtn = styled.button`
-  background-color: #12acdb;
+  ${({ theme }) => theme.flexMixin('', 'center', 'center')};
   width: 185px;
   height: 50px;
-  padding: 13px 10px 14px 10px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  font-weight: bold;
   border-radius: 10px;
+  background-color: ${({ theme }) => theme.skyBlue};
+  color: white;
+  padding: 13px 10px 14px 10px;
   border: none;
+  font-size: 15px;
+  ${({ theme }) => theme.fontWeightBold};
 
   &:hover {
     background-color: #369fc2;
@@ -284,55 +297,34 @@ const OrderBtn = styled.button`
 `;
 
 const ProductDetailBtnList = styled.ul`
+  ${({ theme }) => theme.flexMixin('', 'center', 'center')};
   width: 100%;
   height: 50px;
   background-color: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid ${({ theme }) => theme.grey};
 `;
+
 const ProductInfoBtn = styled.li`
-  padding: 14px 10px 15px 10px;
   width: 132px;
-  text-align: center;
-  font-weight: bold;
+  padding: 14px 10px 15px 10px;
   font-size: 15px;
+  ${({ theme }) => theme.fontWeightBold};
+  text-align: center;
 
   &:hover {
-    cursor: pointer;
     color: #12acdb;
-  }
-`;
-const ReviewBtn = styled.li`
-  padding: 14px 10px 15px 10px;
-  width: 132px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 15px;
-
-  &:hover {
     cursor: pointer;
-    color: #12acdb;
   }
 `;
 
-const Btn = styled.li`
-  padding: 14px 10px 15px 10px;
-  width: 132px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 15px;
+const ReviewBtn = styled(ProductInfoBtn)``;
+const Btn = styled(ProductInfoBtn)``;
 
-  &:hover {
-    cursor: pointer;
-    color: #12acdb;
-  }
-`;
 const ProductMainPage = styled.div`
   width: 692px;
   margin: 10px auto;
 `;
+
 const ProductMainPageImg = styled.img`
   width: 100%;
   margin-top: 90px;
@@ -344,83 +336,69 @@ const ReviewPage = styled.div`
 `;
 
 const ReviewTitle = styled.p`
-  font-size: 18px;
-  font-weight: bold;
   padding-left: 5px;
+  font-size: 18px;
+  ${({ theme }) => theme.fontWeightBold};
 `;
 
 const ReviewFilter = styled.ul`
-  border-top: 1px solid ${({ theme }) => theme.grey};
-  border-bottom: 1px solid ${({ theme }) => theme.grey};
   display: flex;
   padding: 12px 0 12px 0;
   margin-top: 20px;
+  border-top: 1px solid ${({ theme }) => theme.grey};
+  border-bottom: 1px solid ${({ theme }) => theme.grey};
 `;
 
 const ReviewBest = styled.li`
-  font-weight: bold;
   padding: 5px;
-  font-size: 13px;
   margin-right: 6px;
+  ${({ theme }) => theme.fontWeightBold};
+  font-size: 13px;
 
   &:hover {
     cursor: pointer;
     color: #adadad;
   }
 `;
-const ReviewLast = styled.li`
-  font-weight: bold;
-  padding: 5px;
-  font-size: 13px;
-  margin-right: 6px;
-
-  &:hover {
-    cursor: pointer;
-    color: #adadad;
-  }
-`;
-const ReviewPhoto = styled.li`
-  font-weight: bold;
-  padding: 5px;
-  font-size: 13px;
-  margin-right: 6px;
-
-  &:hover {
-    cursor: pointer;
-    color: #adadad;
-  }
-`;
+const ReviewLast = styled(ReviewBest)``;
+const ReviewPhoto = styled(ReviewBest)``;
 
 const ReviewContent = styled.div`
   width: 692px;
   height: 300px;
   padding: 10px;
-  border-bottom: 1px solid ${({ theme }) => theme.grey};
   box-sizing: border-box;
+  border-bottom: 1px solid ${({ theme }) => theme.grey};
 `;
+
 const ReviewId = styled.p`
-  font-size: 13px;
   padding: 6px;
+  font-size: 13px;
 `;
+
 const ReviewOrderWhere = styled.span`
-  font-size: 13px;
   padding: 6px;
-  color: gray;
+  font-size: 13px;
+  color: ${({ theme }) => theme.deepGrey};
 `;
+
 const ReviewDate = styled(ReviewOrderWhere)`
   margin-right: 10px;
 `;
+
 const ReviewItemName = styled.div`
-  font-size: 13px;
-  padding: 6px;
-  font-weight: bold;
   margin: 10px 0 0px 0px;
+  padding: 6px;
+  ${({ theme }) => theme.fontWeightBold};
+  font-size: 13px;
 `;
+
 const ReviewImg = styled.img`
   width: 112px;
   height: 112px;
   margin: 20px 0;
 `;
+
 const ReviewText = styled.p`
   font-size: 15px;
 `;
@@ -430,6 +408,7 @@ const ReviewCreate = styled.form`
   width: 100%;
   margin-top: 15px;
 `;
+
 const ReviewInput = styled.input`
   width: 100%;
   height: 100%;
@@ -442,21 +421,19 @@ const ReviewInput = styled.input`
 `;
 
 const ReviewBtnList = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  ${({ theme }) => theme.flexMixin('', '', 'flex-end')};
   margin-top: 10px;
 `;
+
 const ReviewImgPushBtn = styled.button`
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  border-radius: 10px;
-  color: #12acdb;
-  border: 1px solid #12acdb;
+  ${({ theme }) => theme.flexMixin('', 'center', 'center')};
   width: 80px;
   height: 35px;
+  border-radius: 10px;
+  background-color: white;
+  color: ${({ theme }) => theme.skyBlue};
+  border: 1px solid ${({ theme }) => theme.skyBlue};
+  ${({ theme }) => theme.fontWeightBold};
 
   &:hover {
     background-color: #fafafa;
@@ -465,17 +442,15 @@ const ReviewImgPushBtn = styled.button`
 `;
 
 const ReviewCreateBtn = styled.button`
-  background-color: #12acdb;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  border-radius: 10px;
-  border: none;
-  margin-left: 10px;
+  ${({ theme }) => theme.flexMixin('', 'center', 'center')};
   width: 80px;
   height: 35px;
+  border-radius: 10px;
+  background-color: #12acdb;
+  color: white;
+  border: none;
+  ${({ theme }) => theme.fontWeightBold};
+  margin-left: 10px;
 
   &:hover {
     background-color: #369fc2;
