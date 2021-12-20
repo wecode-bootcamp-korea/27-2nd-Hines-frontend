@@ -1,13 +1,11 @@
-const BASE_URL = '';
+const BASE_URL = 'http://10.58.1.164:8000';
 
-const API = {
-  signin: `${BASE_URL}/users/signin`,
-  signup: `${BASE_URL}/users/signup`,
-  signUsername: `${BASE_URL}/users/username`,
-  signEmail: `${BASE_URL}/users/email`,
-  product: `${BASE_URL}/product`,
-  cart: `${BASE_URL}/cart`,
-  orders: `${BASE_URL}/orders`,
+export const API = {
+  SIGNIN: `${BASE_URL}/users/signin`,
+  SIGN: `${BASE_URL}/users/signup`,
+  SIGN_USER_NAME: `${BASE_URL}/users/username`,
+  SIGN_EMAIL: `${BASE_URL}/users/email`,
+  PRODUCTS: `${BASE_URL}/products`,
+  CART: `${BASE_URL}/cart`,
+  ORDERS: `${BASE_URL}/orders`,
 };
-
-export default API;
