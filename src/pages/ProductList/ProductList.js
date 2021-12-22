@@ -7,7 +7,7 @@ import { API } from '../../config';
 
 function ProductList() {
   const [productInfo, setProductInfo] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [categoriesData, setCategoriesData] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,17 +22,17 @@ function ProductList() {
   }, [location.search]);
 
   useEffect(() => {
-    fetch(`/data/categoryData.json${location.search}`, {
+    fetch(`${API.CATEGORIES}${location.search}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        setCategories(data);
+        setCategoriesData(data.result);
       });
   }, [location.search]);
 
-  const goMainCategories = clickedMenu => {
-    const category_id = clickedMenu;
+  const goMainCategories = clickedCategory => {
+    const category_id = clickedCategory;
     const queryString = `?category_id=${category_id}`;
     navigate(`${queryString}`);
   };
@@ -46,27 +46,17 @@ function ProductList() {
   return (
     <Main>
       <CategoryBox>
-        {categories.map(categoryData => {
-          return (
-            <CategoryAside
-              key={categoryData.category_id}
-              goMainCategories={goMainCategories}
-              goSubCategories={goSubCategories}
-              categoryData={categoryData.category}
-            />
-          );
-        })}
+        <CategoryAside
+          goMainCategories={goMainCategories}
+          goSubCategories={goSubCategories}
+          categoriesData={categoriesData}
+        />
       </CategoryBox>
       <ProductBox>
-        <TodayDisplay />
-        <TitleWrap>
-          <MoreText>More</MoreText>
-        </TitleWrap>
         <ProductWrap>
-          {productInfo &&
-            productInfo.map(items => {
-              return <Product items={items} key={items.id} />;
-            })}
+          {productInfo.map(items => {
+            return <Product items={items} key={items.id} />;
+          })}
         </ProductWrap>
       </ProductBox>
     </Main>
@@ -85,22 +75,6 @@ const CategoryBox = styled.aside`
 
 const ProductBox = styled.div`
   width: 800px;
-`;
-
-const TodayDisplay = styled.div`
-  width: 100%;
-`;
-
-const TitleWrap = styled.div`
-  ${({ theme }) => theme.flexMixin('', '', 'space-between')};
-  font-weight: ${({ theme }) => theme.fontWeightBold};
-  margin: 30px 0;
-  border-bottom: 1px solid #333;
-  padding-bottom: 15px;
-`;
-
-const MoreText = styled.h4`
-  font-size: ${({ theme }) => theme.fontRegular};
 `;
 
 const ProductWrap = styled.div`
