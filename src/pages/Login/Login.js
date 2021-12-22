@@ -1,29 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const { Kakao } = window;
 
-const kakaoLoginClickHandler = () => {
-  Kakao.Auth.login({
-    success: function (authobj) {
-      // http://10.58.4.105:8000/users
-      fetch('http://10.58.4.105:8000/users', {
-        method: 'POST',
-        headers: {
-          Authorization: authobj.access_token,
-        },
-      })
-        .then(res => res.json())
-        .then(data =>
-          data.message === 'SUCCESS'
-            ? sessionStorage.setItem('hines_token', data.Authorization)
-            : alert(data.message)
-        );
-    },
-  });
-};
-
 function Login() {
+  const [userName, setUserName] = useState('');
+  const navigate = useNavigate();
+
+  const kakaoLoginClickHandler = () => {
+    Kakao.Auth.login({
+      success: function (authobj) {
+        fetch('http://10.58.4.105:8000/users', {
+          method: 'POST',
+          headers: {
+            Authorization: authobj.access_token,
+          },
+        })
+          .then(res => res.json())
+          .then(data =>
+            data.message === 'CREATED' || data.message === 'SUCCESS'
+              ? (sessionStorage.setItem('hines_token', data.Authorization),
+                setUserName(data.username),
+                navigate('/'))
+              : alert('로그인이 실패하였습니다')
+          );
+      },
+    });
+  };
+
   return (
     <LoginBg>
       <LoginContainer>
@@ -37,7 +42,7 @@ function Login() {
         <NaverLoginBtn>
           <NaverLoginBtnImg src="/images/naverlog.png" />
         </NaverLoginBtn>
-        <LoginFooter>© 2021 Hines from Meta </LoginFooter>
+        <LoginFooter>© 2021 Hines from Meta {userName}</LoginFooter>
       </LoginContainer>
     </LoginBg>
   );
