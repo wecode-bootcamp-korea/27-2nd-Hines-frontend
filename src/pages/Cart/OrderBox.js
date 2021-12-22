@@ -1,13 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-function OrderBox({ totalAccProps, activeOrderBtn }) {
+function OrderBox({ totalPrice, activeOrderBtn }) {
   return (
     <>
       <OrderBoxSection>
         <ProductAmount>
           <div>총 상품금액</div>
-          <div>{totalAccProps} 코인</div>
+          <div>{totalPrice} 코인</div>
         </ProductAmount>
         <DeliveryFee>
           <div>총 배송비</div>
@@ -19,10 +19,12 @@ function OrderBox({ totalAccProps, activeOrderBtn }) {
         </DiscountAmount>
         <PaymentAmount>
           <div>결제금액</div>
-          <div>{totalAccProps} 코인</div>
+          <div>{totalPrice} 코인</div>
         </PaymentAmount>
       </OrderBoxSection>
-      <OrderBtn onclick={activeOrderBtn}>구매하기</OrderBtn>
+      <OrderBtnSection>
+        <OrderBtn onclick={activeOrderBtn}>구매하기</OrderBtn>
+      </OrderBtnSection>
     </>
   );
 }
@@ -67,10 +69,18 @@ const PaymentAmount = styled.div`
   ${orderBoxText}
 `;
 
+const OrderBtnSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const OrderBtn = styled.button`
-  width: 370px;
+  width: 400px;
   height: 60px;
-  margin: 15px 15px 0 15px;
+  margin-top: 15px;
+  background-color: black;
+  color: white;
   font-size: ${({ theme }) => theme.fontMedium};
   font-weight: 600;
 `;
