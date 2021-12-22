@@ -13,15 +13,15 @@ function ProductBox({
   onClickPlus,
   inputTotal,
   count,
+  setCount,
   increaseCount,
   decreaseCount,
 }) {
   return (
-    <ListContatiner>
+    <ListContainer>
       <BrandBox>{brand}</BrandBox>
       <ListBox>
         <CheckboxThumbnail>
-          <Checkbox type="checkbox" />
           <Thumbnail>
             <ThumbnailImage art="상품이미지" src={image} />
           </Thumbnail>
@@ -37,22 +37,26 @@ function ProductBox({
               <div>{quantity}</div>
               <PlusBtn onClick={() => increaseCount(id)}>+</PlusBtn>
             </QuantityBox>
-            <TotalPrice>{price * quantity} 코인</TotalPrice>
+            <TotalPrice>총액 {price * quantity} 코인</TotalPrice>
           </ListBottom>
         </ListTopBottom>
       </ListBox>
-    </ListContatiner>
+    </ListContainer>
   );
 }
 
 export default ProductBox;
 
 const quantityBtnStyle = css`
+  display: flex;
+  align-items: center;
   width: 25px;
   height: 25px;
+  background-color: black;
+  color: white;
 `;
-const ListContatiner = styled.div`
-  margin-bottom: 30px;
+const ListContainer = styled.div`
+  margin: 30px 0;
   border: solid 1px gray;
 `;
 
@@ -72,6 +76,7 @@ const ListBox = styled.div`
   align-items: center;
   height: 200px;
   font-size: ${({ theme }) => theme.fontRegular};
+  font-weight: 600;
 `;
 
 const CheckboxThumbnail = styled.div`
@@ -80,27 +85,23 @@ const CheckboxThumbnail = styled.div`
   align-items: center;
   width: 170px;
 `;
-const Checkbox = styled.input`
-  width: 30px;
-  height: 30px;
-  margin: 0 0 0 15px;
-`;
 
 const Thumbnail = styled.div`
-  margin-left: 15px;
+  margin-left: 30px;
 `;
 
 const ThumbnailImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
+  border: solid 1px gray;
 `;
 
 const ListTopBottom = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  width: 390px;
-  margin-right: 15px;
+  width: 350px;
+  margin-right: 30px;
 `;
 const ListTop = styled.div`
   display: flex;
@@ -111,8 +112,11 @@ const ListTop = styled.div`
 
 const ProductInfo = styled.div`
   width: 350px;
+  font-size: ${({ theme }) => theme.fontMedium};
 `;
-const DeleteBtn = styled.button``;
+const DeleteBtn = styled.button`
+  ${quantityBtnStyle}
+`;
 
 const ListBottom = styled.div`
   display: flex;
@@ -126,19 +130,14 @@ const QuantityBox = styled.div`
   justify-content: end;
   align-items: center;
 `;
-
-const Quantity = styled.input`
-  width: 40px;
-  height: 20px;
-`;
-
 const MinusBtn = styled.button`
   ${quantityBtnStyle}
-  margin-right: 5px;
+  margin-right: 10px;
 `;
 
 const PlusBtn = styled(MinusBtn)`
-  margin-left: 5px;
+  margin-right: 0px;
+  margin-left: 10px;
 `;
 
 const TotalPrice = styled.div`

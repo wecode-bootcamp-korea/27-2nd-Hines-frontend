@@ -4,7 +4,7 @@
     "product_name": "고양이 옷",
     "product_brand": "JB",
     "product_image": "https://ifh.cc/g/uGjIbm.jpg",
-    "product_price": "9900",
+    "product_price": "100",
     "product_quantity": "2"
   },
   {
@@ -12,7 +12,7 @@
     "product_name": "강아지 바지",
     "product_brand": "JB",
     "product_image": "https://ifh.cc/g/71E574.jpg",
-    "product_price": "7900",
+    "product_price": "200",
     "product_quantity": "3"
   },
   {
@@ -20,7 +20,23 @@
     "product_name": "참새 코트",
     "product_brand": "JB",
     "product_image": "https://ifh.cc/g/fK841d.jpg",
-    "product_price": "17900",
+    "product_price": "300",
+    "product_quantity": "5"
+  },
+  {
+    "product_id": 4,
+    "product_name": "참새 코트2",
+    "product_brand": "JB",
+    "product_image": "https://ifh.cc/g/fK841d.jpg",
+    "product_price": "300",
+    "product_quantity": "5"
+  },
+  {
+    "product_id": 5,
+    "product_name": "참새 코트3",
+    "product_brand": "JB",
+    "product_image": "https://ifh.cc/g/fK841d.jpg",
+    "product_price": "300",
     "product_quantity": "5"
   }
 ]
