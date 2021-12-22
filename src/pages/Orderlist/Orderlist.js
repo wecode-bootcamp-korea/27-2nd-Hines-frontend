@@ -9,7 +9,7 @@ function Orderlist() {
 
   useEffect(() => {
     fetch(`${API.ORDERS}`, {
-      method: 'get',
+      method: 'GET',
     })
       .then(res => res.json())
       .then(data => setOrderInfo(data));
