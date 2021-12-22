@@ -1,33 +1,28 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-function CategoryAside({ categoryData, goMainCategories, goSubCategories }) {
+function CategoryAside({ categoriesData, goMainCategories, goSubCategories }) {
   return (
     <CategoryListWrap>
-      <CategoryList>
-        {categoryData.map(categories => {
-          return (
-            <CategoryTitle
-              key={categories.category_id}
-              onClick={() => goMainCategories}
-              to={`?category_id=${categories.category_id}`}
-            >
-              {categories.category_name}
-              {categories.sub_category.map(subCategory => {
-                return (
-                  <SubCategoryTitle
-                    key={subCategory.sub_category_id}
-                    onClick={() => goSubCategories}
-                    to={`?sub_category_id=${subCategory.sub_category_id}`}
-                  >
-                    {subCategory.sub_category_name}
-                  </SubCategoryTitle>
-                );
-              })}
-            </CategoryTitle>
-          );
-        })}
-      </CategoryList>
+      {categoriesData.map(categories => {
+        return (
+          <CategoryTitle key={categories.id} onClick={() => goMainCategories}>
+            <Link to={`?category_id=${categories.id}`}>{categories.name}</Link>
+            {categories.sub_category.map(subCategory => {
+              return (
+                <SubCategoryTitle
+                  key={subCategory.id}
+                  onClick={() => goSubCategories}
+                >
+                  <Link to={`?sub_category_id=${subCategory.id}`}>
+                    {subCategory.name}
+                  </Link>
+                </SubCategoryTitle>
+              );
+            })}
+          </CategoryTitle>
+        );
+      })}
     </CategoryListWrap>
   );
 }
@@ -38,17 +33,15 @@ const CategoryListWrap = styled.ul`
   padding-right: 20px;
 `;
 
-const CategoryList = styled.li`
-  padding: 10px;
-`;
-
-const CategoryTitle = styled(Link)`
+const CategoryTitle = styled.li`
   font-size: ${({ theme }) => theme.fontMedium};
   font-weight: 500;
-  color: #333;
+  a {
+    color: #333;
+  }
 `;
 
-const SubCategoryTitle = styled(Link)`
+const SubCategoryTitle = styled.p`
   display: block;
   font-size: ${({ theme }) => theme.fontRegular};
   padding: 5px 0 0 10px;

@@ -37,6 +37,7 @@ const ProductCard = styled.div`
   padding-bottom: 30px;
   img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
   }
   cursor: pointer;
