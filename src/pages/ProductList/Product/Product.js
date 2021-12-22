@@ -6,7 +6,7 @@ function Product({ items }) {
   const navigate = useNavigate();
 
   const goToDetail = () => {
-    navigate(`/productList/productdetail/${items.id}`);
+    navigate(`/product/${items.id}`);
   };
 
   return (

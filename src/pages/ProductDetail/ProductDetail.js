@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Plus } from '@styled-icons/bootstrap/Plus';
 import { Dash } from '@styled-icons/bootstrap/Dash';
+import { API } from '../../config';
 
 function ProductDetail() {
   // Router.js 파일에
@@ -21,13 +22,11 @@ function ProductDetail() {
   useEffect(() => {
     // useParams 로 갖고 온 product_id 와 router.js 파일에 작성한 productId 값
     // ${:product_id} 이게 맞나?
-    fetch(`http://10.58.0.184:8000/products/${product_id}`)
+    fetch(`${API.PRODUCTS}/${product_id}`)
       // 그 id 를 보여주세요 get
       .then(res => res.json())
       .then(data => setProduct(data.result));
   }, [product_id]); // product_id
-
-  // console.log(product);
 
   // useEffect 는 랜더링 후 무조건 한 번은 useEffect 가 실행된다.
   // 그러나 dependency 안에 변수를 지정하게 되면

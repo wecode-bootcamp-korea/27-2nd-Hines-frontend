@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { API } from '../../config';
 
 const { Kakao } = window;
 
@@ -11,7 +12,7 @@ function Login() {
   const kakaoLoginClickHandler = () => {
     Kakao.Auth.login({
       success: function (authobj) {
-        fetch('http://10.58.4.105:8000/users', {
+        fetch(`${API.USERS}`, {
           method: 'POST',
           headers: {
             Authorization: authobj.access_token,
