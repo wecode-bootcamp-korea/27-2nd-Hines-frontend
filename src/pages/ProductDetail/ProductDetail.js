@@ -1,67 +1,61 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Plus } from '@styled-icons/bootstrap/Plus';
 import { Dash } from '@styled-icons/bootstrap/Dash';
 import { API } from '../../config';
 
 function ProductDetail() {
-  // Router.js 파일에
-  // <Route path="/productdetail:productId" element={<ProductDetail />} />
-  // 이렇게 작성하고 그 다음 useParams() 로 id 값을 가져온다.
   const { product_id } = useParams();
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
-
-  // console.log(product_id); // id 값이 2이면 2가 출력
-
-  // // 콘솔로그 했을 때 monsterId 프로퍼티는 아무데서나 나오는 것이 아니라
-  // // Router.js 파일에서 나오는 것
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // useParams 로 갖고 온 product_id 와 router.js 파일에 작성한 productId 값
-    // ${:product_id} 이게 맞나?
     fetch(`${API.PRODUCTS}/${product_id}`)
-      // 그 id 를 보여주세요 get
       .then(res => res.json())
       .then(data => setProduct(data.result));
-  }, [product_id]); // product_id
-
-  // useEffect 는 랜더링 후 무조건 한 번은 useEffect 가 실행된다.
-  // 그러나 dependency 안에 변수를 지정하게 되면
-  // 다른 값들과 상관없이 지정된 값이 변해야 지만
-  // useEffect 가 실행된다.
-  // dependenfy 는 배열로 되어있기 때문에
-  // 여러 변수를 dependency로 사용할 수 있다.
+  }, [product_id]);
 
   const AddToCartBtn = () => {
-    useEffect(() => {
-      fetch('', {
-        method: 'POST',
-        headers: {
-          Authorization: localStorage.getItem('hines_token'),
-        },
-        body: JSON.stringify({
-          product_id,
-          quantity: quantity,
-        }),
-      })
-        .then(res => {
-          if (res.status === 200) {
-            alert('장바구니에 상품이 담겼습니다.');
-          } else if (res.status === 403) {
-            return res.json();
-          }
-        })
-        .then(res => {
-          console.log('에러 메시지 ->', res.message);
-        });
-    }, []);
+    fetch(`${API.CART}`, {
+      method: 'POST',
+      headers: {
+        Authorization: sessionStorage.getItem('hines_token'),
+      },
+      body: JSON.stringify({
+        product_id,
+        quantity: quantity,
+      }),
+    }).then(res => {
+      if (res.ok === true) {
+        alert('장바구니에 정상적으로 담겼습니다.');
+      }
+    });
+  };
+
+  const goToOrderBtn = () => {
+    // 패치 점검
+    fetch(`${API.CART}`, {
+      method: 'POST',
+      headers: {
+        Authorization: sessionStorage.getItem('hines_token'),
+      },
+      body: JSON.stringify({
+        product_id,
+        quantity: quantity,
+      }),
+    }).then(res => {
+      if (res.ok === true) {
+        alert('주문내역으로 이동합니다');
+        navigate('/');
+      }
+    });
   };
 
   const onPlusQuantityBtn = () => {
-    setQuantity(quantity + 1);
+    setQuantity(quantity => quantity + 1);
   };
 
   const onMinusQuantityBtn = () => {
@@ -69,7 +63,7 @@ function ProductDetail() {
       alert('최소 수량은 1개입니다.');
       return;
     }
-    setQuantity(quantity - 1);
+    setQuantity(quantity => quantity - 1);
   };
 
   const [imgUrl, setImgUrl] = useState(true);
@@ -142,7 +136,7 @@ function ProductDetail() {
                 </TotalPriceContainer>
                 <BtnList>
                   <CartBtn onClick={AddToCartBtn}>장바구니</CartBtn>
-                  <OrderBtn>바로구매</OrderBtn>
+                  <OrderBtn onClick={goToOrderBtn}>바로구매</OrderBtn>
                 </BtnList>
               </ProductInfo>
             </Product>
@@ -200,6 +194,11 @@ function ProductDetail() {
                 <ReviewCreateBtn>리뷰 등록</ReviewCreateBtn>
               </ReviewBtnList>
             </ReviewCreate>
+
+            <ReviewPageMoveBtnList>
+              <ReviewPageMoveBtn>{'<'}</ReviewPageMoveBtn>
+              <ReviewPageMoveBtn>{'>'}</ReviewPageMoveBtn>
+            </ReviewPageMoveBtnList>
           </ReviewPage>
         </div>
       )}
@@ -246,6 +245,7 @@ const ProductImgLi = styled.li`
 const ProductImg = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 5px;
   transition: all 0.1s linear;
 
@@ -264,6 +264,7 @@ const ProductMainImg = styled.div`
 const ProductMainImgUrl = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 10px;
 `;
 
@@ -553,6 +554,16 @@ const ReviewCreateBtn = styled.button`
     background-color: #369fc2;
     cursor: pointer;
   }
+`;
+
+const ReviewPageMoveBtnList = styled.div`
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const ReviewPageMoveBtn = styled.button`
+  margin: 5px;
 `;
 
 export default ProductDetail;
