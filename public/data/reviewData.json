@@ -12,7 +12,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "2",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -22,7 +22,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "3",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -32,7 +32,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "4",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -42,7 +42,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "5",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -52,7 +52,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "6",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -62,7 +62,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "7",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -72,7 +72,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "8",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -82,7 +82,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "9",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -92,7 +92,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "10",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -102,7 +102,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "11",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -112,7 +112,7 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "12",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
@@ -122,7 +122,37 @@
     },
     {
       "date": "2021.12.16.Thu",
-      "kakao_id": "1",
+      "kakao_id": "13",
+      "product_name": "MARS-9",
+      "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
+      "image_url": [
+        "https://raw.githubusercontent.com/Djangowon?TIL/main/image/MARS.jpeg",
+        "https://raw.githubusercontent.com/Djangowon?TIL/main/image/MARS.jpeg"
+      ]
+    },
+    {
+      "date": "2021.12.16.Thu",
+      "kakao_id": "13",
+      "product_name": "MARS-9",
+      "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
+      "image_url": [
+        "https://raw.githubusercontent.com/Djangowon?TIL/main/image/MARS.jpeg",
+        "https://raw.githubusercontent.com/Djangowon?TIL/main/image/MARS.jpeg"
+      ]
+    },
+    {
+      "date": "2021.12.16.Thu",
+      "kakao_id": "13",
+      "product_name": "MARS-9",
+      "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
+      "image_url": [
+        "https://raw.githubusercontent.com/Djangowon?TIL/main/image/MARS.jpeg",
+        "https://raw.githubusercontent.com/Djangowon?TIL/main/image/MARS.jpeg"
+      ]
+    },
+    {
+      "date": "2021.12.16.Thu",
+      "kakao_id": "13",
       "product_name": "MARS-9",
       "content": "비싸긴 하지만 이쁘긴 하네요...ㅎㅎ",
       "image_url": [
