@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 function ProductBox({
+  cartId,
   id,
   name,
   brand,
@@ -9,11 +10,6 @@ function ProductBox({
   price,
   quantity,
   activeDeleteBtn,
-  onClickMinus,
-  onClickPlus,
-  inputTotal,
-  count,
-  setCount,
   increaseCount,
   decreaseCount,
 }) {
@@ -29,13 +25,13 @@ function ProductBox({
         <ListTopBottom>
           <ListTop>
             <ProductInfo>{name}</ProductInfo>
-            <DeleteBtn onClick={() => activeDeleteBtn(id)}>X</DeleteBtn>
+            <DeleteBtn onClick={() => activeDeleteBtn(id, cartId)}>X</DeleteBtn>
           </ListTop>
           <ListBottom>
             <QuantityBox>
-              <MinusBtn onClick={() => decreaseCount(id)}>-</MinusBtn>
+              <MinusBtn onClick={() => decreaseCount(id, quantity)}>-</MinusBtn>
               <div>{quantity}</div>
-              <PlusBtn onClick={() => increaseCount(id)}>+</PlusBtn>
+              <PlusBtn onClick={() => increaseCount(id, quantity)}>+</PlusBtn>
             </QuantityBox>
             <TotalPrice>총액 {price * quantity} 코인</TotalPrice>
           </ListBottom>

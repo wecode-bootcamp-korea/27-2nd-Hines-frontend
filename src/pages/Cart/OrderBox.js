@@ -7,11 +7,11 @@ function OrderBox({ totalPrice, activeOrderBtn }) {
       <OrderBoxSection>
         <ProductAmount>
           <div>총 상품금액</div>
-          <div>{totalPrice} 코인</div>
+          <div>{totalPrice()} 코인</div>
         </ProductAmount>
         <DeliveryFee>
           <div>총 배송비</div>
-          <div>0 코인</div>
+          <div>무료배송</div>
         </DeliveryFee>
         <DiscountAmount>
           <div>총 할인금액</div>
@@ -19,11 +19,11 @@ function OrderBox({ totalPrice, activeOrderBtn }) {
         </DiscountAmount>
         <PaymentAmount>
           <div>결제금액</div>
-          <div>{totalPrice} 코인</div>
+          <div>{totalPrice()} 코인</div>
         </PaymentAmount>
       </OrderBoxSection>
       <OrderBtnSection>
-        <OrderBtn onclick={activeOrderBtn}>구매하기</OrderBtn>
+        <OrderBtn onClick={activeOrderBtn}>구매하기</OrderBtn>
       </OrderBtnSection>
     </>
   );
