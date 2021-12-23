@@ -5,7 +5,7 @@ import { API } from '../../config';
 
 const { Kakao } = window;
 
-function Login() {
+function Login(setIsvaildToken) {
   const [userName, setUserName] = useState('');
   const navigate = useNavigate();
 

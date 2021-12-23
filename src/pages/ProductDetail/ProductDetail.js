@@ -9,7 +9,7 @@ import ReviewPageMoveBtn from '../../components/ReviewPageMoveBtnList';
 // 컴포넌트를 쓰려면 import 를 해와야 한다.
 // 이때 이름 별칭은 다르게 지정해줘도 된다.
 
-function ProductDetail() {
+function ProductDetail(isvaildToken) {
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [reviews, setReviews] = useState([]);
@@ -37,6 +37,9 @@ function ProductDetail() {
     }).then(res => {
       if (res.ok) {
         alert('장바구니에 정상적으로 담겼습니다.');
+      } else {
+        alert('로그인을 해주세요.');
+        navigate('/login');
       }
     });
   };
@@ -54,7 +57,10 @@ function ProductDetail() {
     }).then(res => {
       if (res.ok) {
         alert('주문내역으로 이동합니다');
-        navigate('/');
+        navigate('/cart');
+      } else {
+        alert('로그인을 해주세요.');
+        navigate('/login');
       }
     });
   };
@@ -79,7 +85,7 @@ function ProductDetail() {
     //http://localhost:8000/users${location.search || `limit=5&offset=0`}
     fetch(
       //
-      `http://10.58.7.7:8000/products/1/review${
+      `${API.PRODUCTS}/${product_id}/review?${
         location.search || `limit=5&offset=0`
       }`
     )
