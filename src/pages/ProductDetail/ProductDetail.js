@@ -1,16 +1,22 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { Plus } from '@styled-icons/bootstrap/Plus';
 import { Dash } from '@styled-icons/bootstrap/Dash';
 import { API } from '../../config';
+import ReviewPageMoveBtn from '../../components/ReviewPageMoveBtnList';
+// 컴포넌트를 쓰려면 import 를 해와야 한다.
+// 이때 이름 별칭은 다르게 지정해줘도 된다.
 
 function ProductDetail() {
-  const { product_id } = useParams();
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const [reviews, setReviews] = useState([]);
+  const [totalCount, setTotalCount] = useState([]);
+  const { product_id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     fetch(`${API.PRODUCTS}/${product_id}`)
@@ -29,14 +35,13 @@ function ProductDetail() {
         quantity: quantity,
       }),
     }).then(res => {
-      if (res.ok === true) {
+      if (res.ok) {
         alert('장바구니에 정상적으로 담겼습니다.');
       }
     });
   };
 
   const goToOrderBtn = () => {
-    // 패치 점검
     fetch(`${API.CART}`, {
       method: 'POST',
       headers: {
@@ -47,7 +52,7 @@ function ProductDetail() {
         quantity: quantity,
       }),
     }).then(res => {
-      if (res.ok === true) {
+      if (res.ok) {
         alert('주문내역으로 이동합니다');
         navigate('/');
       }
@@ -70,7 +75,37 @@ function ProductDetail() {
   // 1. state 변수에 변수를 넣어서는 안됨
   // 2. onClick
 
+  useEffect(() => {
+    //http://localhost:8000/users${location.search || `limit=5&offset=0`}
+    fetch(
+      //
+      `http://10.58.7.7:8000/products/1/review${
+        location.search || `limit=5&offset=0`
+      }`
+    )
+      .then(res => res.json())
+      .then(data => {
+        setReviews(data.result.results);
+        setTotalCount(data.result.total_count);
+      });
+  }, [location.search]);
+
+  const reviewLength = totalCount;
+  const createBtnNum =
+    reviewLength % 5 === 0
+      ? Math.floor(reviewLength / 5)
+      : Math.floor(reviewLength / 5) + 1;
+
+  const updateOffset = buttonIndex => {
+    const limit = 5; // 화면에 보여줄 데이터 갯수
+    const offset = buttonIndex * limit; // 데이터 시작점
+    const queryString = `limit=${limit}&offset=${offset}`;
+
+    navigate(`?${queryString}`); // 물음표의 뜻: 쿼리스트링의 시작
+  };
+
   // product 하면 안되고 product.image_url 하면 됨
+
   return (
     <ProductDetailBg>
       {product.image_url && (
@@ -114,7 +149,7 @@ function ProductDetail() {
                 <BrandName>{product.brand}</BrandName>
                 <ProductName>{product.product_name}</ProductName>
                 <Price>
-                  <PriceNum>{product.price}</PriceNum>원
+                  <PriceNum>{Math.floor(product.price)}</PriceNum>B
                 </Price>
                 <Description>{product.description}</Description>
                 <BrandName>{product.brand}</BrandName>
@@ -131,7 +166,10 @@ function ProductDetail() {
                 <TotalPriceContainer>
                   <TotalPriceTitle>주문금액</TotalPriceTitle>
                   <TotalPrice>
-                    <TotalPriceNum>{product.price * quantity}</TotalPriceNum>원
+                    <TotalPriceNum>
+                      {Math.floor(product.price) * quantity}
+                    </TotalPriceNum>
+                    B
                   </TotalPrice>
                 </TotalPriceContainer>
                 <BtnList>
@@ -155,37 +193,26 @@ function ProductDetail() {
             />
             <ProductMainPageImg src={product.image_url[1]} alt="item-img" />
           </ProductMainPage>
+
           <ReviewPage>
             <ReviewTitle>리뷰</ReviewTitle>
             <ReviewFilter>
-              <ReviewBest>베스트순</ReviewBest>
+              <ReviewOld>오래된순</ReviewOld>
               <ReviewLast>최신순</ReviewLast>
               <ReviewPhoto>사진리뷰</ReviewPhoto>
             </ReviewFilter>
-            <ReviewContent>
-              <ReviewId>오킨비</ReviewId>
-              <ReviewDate>2021.11.16</ReviewDate>
-              <ReviewOrderWhere>Hines 구매</ReviewOrderWhere>
-              <ReviewItemName>블랙라인</ReviewItemName>
-              <ReviewImg src="/images/sample.png" alt="item-img" />
-              <ReviewText>
-                150 트리에 4개전구 감았어요! 생각보다 풍성하게 감기네여 :) 너무
-                이뻐요 남편이 백화점 트리장식 같다고 고급지다고 하네여 ~ 아기도
-                너무 좋아합니다!
-              </ReviewText>
-            </ReviewContent>
-            <ReviewContent>
-              <ReviewId>오킨비</ReviewId>
-              <ReviewDate>2021.11.16</ReviewDate>
-              <ReviewOrderWhere>Hines 구매</ReviewOrderWhere>
-              <ReviewItemName>블랙라인</ReviewItemName>
-              <ReviewImg src="/images/sample.png" alt="item-img" />
-              <ReviewText>
-                150 트리에 4개전구 감았어요! 생각보다 풍성하게 감기네여 :) 너무
-                이뻐요 남편이 백화점 트리장식 같다고 고급지다고 하네여 ~ 아기도
-                너무 좋아합니다!
-              </ReviewText>
-            </ReviewContent>
+            {reviews.map((review, i) => {
+              return (
+                <ReviewContent key={i}>
+                  <ReviewId>{review.kakao_id}</ReviewId>
+                  <ReviewDate>{review.date}</ReviewDate>
+                  <ReviewOrderWhere>Hines 구매</ReviewOrderWhere>
+                  <ReviewItemName>{review.product_name}</ReviewItemName>
+                  <ReviewImg src={review.image_url[0]} alt="item-img" />
+                  <ReviewText>{review.content}</ReviewText>
+                </ReviewContent>
+              );
+            })}
 
             <ReviewCreate>
               <ReviewInput />
@@ -194,10 +221,11 @@ function ProductDetail() {
                 <ReviewCreateBtn>리뷰 등록</ReviewCreateBtn>
               </ReviewBtnList>
             </ReviewCreate>
-
             <ReviewPageMoveBtnList>
-              <ReviewPageMoveBtn>{'<'}</ReviewPageMoveBtn>
-              <ReviewPageMoveBtn>{'>'}</ReviewPageMoveBtn>
+              <ReviewPageMoveBtn
+                createBtnNum={createBtnNum}
+                updateOffset={updateOffset}
+              />
             </ReviewPageMoveBtnList>
           </ReviewPage>
         </div>
@@ -447,7 +475,7 @@ const ReviewFilter = styled.ul`
   border-bottom: 1px solid ${({ theme }) => theme.grey};
 `;
 
-const ReviewBest = styled.li`
+const ReviewOld = styled.li`
   padding: 5px;
   margin-right: 6px;
   ${({ theme }) => theme.fontWeightBold};
@@ -458,8 +486,8 @@ const ReviewBest = styled.li`
     color: #adadad;
   }
 `;
-const ReviewLast = styled(ReviewBest)``;
-const ReviewPhoto = styled(ReviewBest)``;
+const ReviewLast = styled(ReviewOld)``;
+const ReviewPhoto = styled(ReviewOld)``;
 
 const ReviewContent = styled.div`
   width: 692px;
@@ -562,8 +590,8 @@ const ReviewPageMoveBtnList = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const ReviewPageMoveBtn = styled.button`
-  margin: 5px;
-`;
+// const ReviewPageMoveBtn = styled.button`
+//   margin: 5px;
+// `;
 
 export default ProductDetail;
