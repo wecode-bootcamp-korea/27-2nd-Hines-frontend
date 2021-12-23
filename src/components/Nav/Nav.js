@@ -7,7 +7,7 @@ import { MagnifyingGlass } from '@styled-icons/entypo/MagnifyingGlass';
 import { Cart } from '@styled-icons/bootstrap/Cart';
 import { Pencil } from '@styled-icons/bootstrap/Pencil';
 
-function Nav() {
+function Nav({ isvaildToken }) {
   return (
     <>
       <Navbar>
@@ -28,10 +28,16 @@ function Nav() {
               <SearchIcon />
               <SearchInput type="text" />
             </SearchBox>
-            <LoginLink to="login">로그인</LoginLink>
-            <CartLink to="/cart">
+            <LoginLink to="login">
+              {isvaildToken ? '환영합니다' : '로그인'}
+            </LoginLink>
+            {isvaildToken ? (
+              <CartLink to="/cart">
+                <CartIcon />
+              </CartLink>
+            ) : (
               <CartIcon />
-            </CartLink>
+            )}
             <WritingICon />
           </RightSection>
         </NavSection>
