@@ -24,10 +24,12 @@ https://www.youtube.com/watch?v=vRStHiqn7qM
 ---
 
 # SKillS
----
 - Front-End: React.js, Styled Component, React Router
 - Back-End: Python, Django web framework, MySQL
 - Common: AWS
+- 
+---
+
 
 ### 소통 툴
 - Git, Github, Slack, Trello, Notion
@@ -39,7 +41,7 @@ https://www.youtube.com/watch?v=vRStHiqn7qM
 - 제품 상세 페이지
 - 장바구니
 - 구매 내역
-- 하단바
+
 #### 상단바 (header/nav)
 - 스크롤시 카테고리부분이 고정
 #### 로그인
