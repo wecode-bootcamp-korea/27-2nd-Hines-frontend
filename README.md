@@ -18,7 +18,7 @@
 
 # 구현 영상
 
-https://www.youtube.com/watch?v=vRStHiqn7qM
+https://www.youtube.com/watch?v=Z4Hw1AQc_og
 
 
 ---
