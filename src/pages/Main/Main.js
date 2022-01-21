@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Product from '../ProductList/Product/Product';
+import useAxios from 'hooks/useAxios';
 import ProductListBanner from '../ProductList/ProductListBanner';
 import MostProductCard from '../ProductList/Product/MostProductCard';
 import { API } from '../../config';
@@ -19,6 +20,9 @@ function ProductList() {
         setProductInfo(data.result);
       });
   }, [location.search]);
+  // const url =
+  // const qurey =
+  // const { data, error, loading } = useAxios(url);
 
   return (
     <>
